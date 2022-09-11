@@ -14,5 +14,9 @@ public class FootballImp implements League{
         return footballRepository.insertTeam(football);
     }
 
+    @Override
+    public void deleteTeam(int points) throws SQLException {
+        deleteTeam(points);
+    }//toDo
 
 }
