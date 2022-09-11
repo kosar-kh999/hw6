@@ -3,6 +3,7 @@ package ir.maktab.model.repository;
 import ir.maktab.config.ApplicationConstant;
 import ir.maktab.model.entity.Football;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -21,5 +22,12 @@ public class FootballRepository {
         preparedStatement.setInt(6, football.getPoints());
         preparedStatement.setInt(7, football.getNumberOfPlayed());
         return preparedStatement.executeUpdate();
+    }
+
+    public void deleteTeam(int points) throws SQLException {
+        String sql = "DELETE FROM football_tbl WHERE MIN(points) = ? ";
+        PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
+        preparedStatement.setInt(1, points);
+        preparedStatement.executeUpdate();
     }
 }
