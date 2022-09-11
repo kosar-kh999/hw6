@@ -21,7 +21,8 @@ public abstract class SportClub {
         this.numberOfPlayed = numberOfPlayed;
     }
 
-    public SportClub(int id, String name, String location, int wins, int draws, int defeats, int points, int numberOfPlayed) {
+    public SportClub(int id, String name, String location, int wins, int draws, int defeats, int points,
+                     int numberOfPlayed) {
         this.id = id;
         this.name = name;
         this.location = location;
