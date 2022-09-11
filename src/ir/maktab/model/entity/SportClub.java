@@ -11,6 +11,27 @@ public abstract class SportClub {
     int points;
     int numberOfPlayed;
 
+    public SportClub(String name, String location, int wins, int draws, int defeats, int points, int numberOfPlayed) {
+        this.name = name;
+        this.location = location;
+        this.wins = wins;
+        this.draws = draws;
+        this.defeats = defeats;
+        this.points = points;
+        this.numberOfPlayed = numberOfPlayed;
+    }
+
+    public SportClub(int id, String name, String location, int wins, int draws, int defeats, int points, int numberOfPlayed) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
+        this.wins = wins;
+        this.draws = draws;
+        this.defeats = defeats;
+        this.points = points;
+        this.numberOfPlayed = numberOfPlayed;
+    }
+
     public int getId() {
         return id;
     }
