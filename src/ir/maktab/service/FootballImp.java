@@ -25,4 +25,9 @@ public class FootballImp implements League{
         return footballRepository.showInformation();
     }
 
+    @Override
+    public void sortByPoints() throws SQLException {
+
+    }//toDo
+
 }
