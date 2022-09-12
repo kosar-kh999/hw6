@@ -25,9 +25,8 @@ public class FootballRepository {
     }
 
     public void deleteTeam(int points) throws SQLException {
-        String sql = "DELETE FROM football_tbl WHERE MIN(points) = ? ";
+        String sql = "DELETE FROM football_tbl WHERE MIN(points)  ";
         PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
-        preparedStatement.setInt(1, points);
         preparedStatement.executeUpdate();
     }
 }
