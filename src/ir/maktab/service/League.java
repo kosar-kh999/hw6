@@ -8,9 +8,12 @@ import java.util.List;
 
 public interface League {
 
-     int addTeam(Football football) throws SQLException;
+    int addTeam(Football football) throws SQLException;
 
-     void deleteTeam(int points) throws SQLException;
+    void deleteTeam(int points) throws SQLException;
 
     public List<Football> showInformationTeam() throws SQLException;
+
+    public void sortByPoints() throws SQLException;
+
 }
