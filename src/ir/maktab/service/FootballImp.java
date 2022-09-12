@@ -4,6 +4,7 @@ import ir.maktab.model.entity.Football;
 import ir.maktab.model.repository.FootballRepository;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class FootballImp implements League{
 
@@ -18,5 +19,10 @@ public class FootballImp implements League{
     public void deleteTeam(int points) throws SQLException {
         deleteTeam(points);
     }//toDo
+
+    @Override
+    public List<Football> showInformationTeam() throws SQLException {
+        return footballRepository.showInformation();
+    }
 
 }
