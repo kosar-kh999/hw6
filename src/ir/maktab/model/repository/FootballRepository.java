@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FootballRepository {
 
@@ -26,15 +28,32 @@ public class FootballRepository {
     }
 
     public void deleteTeam(int points) throws SQLException {
+
         String sql = "DELETE FROM football_tbl WHERE MIN(points)  ";
         PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
         preparedStatement.executeUpdate();
     }
 
-    public void countPlays(int plays) throws SQLException {
+    public void countPlays() throws SQLException {
 
         String sql = "SELECT count(numberOfPlayed)FROM football_tbl ";
         PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
+    }
+
+    public List<Football> showInformation() throws SQLException {
+
+        String sql = "Select * from football_tbl ";
+        PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
+        List<Football> footballs = new ArrayList<>();
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            Football football = new Football(resultSet.getInt(1),
+                    resultSet.getString(2), resultSet.getString(3), resultSet.getInt(4),
+                    resultSet.getInt(5), resultSet.getInt(6), resultSet.getInt(7),
+                    resultSet.getInt(8));
+            footballs.add(football);
+        }
+        return footballs;
     }
 }
