@@ -56,4 +56,12 @@ public class FootballRepository {
         }
         return footballs;
     }
+
+    public void LeagueSort() throws SQLException {
+
+        String sql = "Select * from football_tbl ORDER BY points";
+        PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+    }
+
 }
