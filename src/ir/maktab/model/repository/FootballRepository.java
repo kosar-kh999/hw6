@@ -5,6 +5,7 @@ import ir.maktab.model.entity.Football;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class FootballRepository {
@@ -28,5 +29,12 @@ public class FootballRepository {
         String sql = "DELETE FROM football_tbl WHERE MIN(points)  ";
         PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
         preparedStatement.executeUpdate();
+    }
+
+    public void countPlays(int plays) throws SQLException {
+
+        String sql = "SELECT count(numberOfPlayed)FROM football_tbl ";
+        PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
     }
 }
