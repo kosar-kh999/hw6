@@ -11,7 +11,7 @@ public class VolleyBallRepository {
 
     public int insertTeam(VolleyBall volleyBall) throws SQLException {
 
-        String sql = "insert into football_tbl  (name,location,wins,defeats,points,numberOfPlayed)values " +
+        String sql = "insert into volleyBall_tbl  (name,location,wins,defeats,points,numberOfPlayed)values " +
                 " (?,?,?,?,?,?)";
         PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
         preparedStatement.setString(1,volleyBall.getName() );
