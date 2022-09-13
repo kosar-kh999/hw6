@@ -1,6 +1,5 @@
 package ir.maktab.model.entity;
 
-import java.util.*;
 
 public class Football extends SportClub{
 
@@ -13,4 +12,7 @@ public class Football extends SportClub{
         super(id, name, location, wins, draws, defeats, points, numberOfPlayed);
     }
 
+    public Football(String name, int wins, int draws, int defeats, int points, int numberOfPlayed) {
+        super(name, wins, draws, defeats, points, numberOfPlayed);
+    }
 }

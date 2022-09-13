@@ -33,6 +33,15 @@ public abstract class SportClub {
         this.numberOfPlayed = numberOfPlayed;
     }
 
+    public SportClub(String name, int wins, int draws, int defeats, int points, int numberOfPlayed) {
+        this.name = name;
+        this.wins = wins;
+        this.draws = draws;
+        this.defeats = defeats;
+        this.points = points;
+        this.numberOfPlayed = numberOfPlayed;
+    }
+
     public int getId() {
         return id;
     }
