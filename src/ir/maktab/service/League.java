@@ -14,6 +14,6 @@ public interface League {
 
     public List<Football> showInformationTeam() throws SQLException;
 
-    public void sortByPoints() throws SQLException;
+    public List<Football> leagueSort() throws SQLException;
 
 }

@@ -34,11 +34,15 @@ public class FootballRepository {
         preparedStatement.executeUpdate();
     }
 
-    public void countPlays() throws SQLException {
+    public int countPlays() throws SQLException {
 
         String sql = "SELECT count(numberOfPlayed)FROM football_tbl ";
         PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()){
+            return resultSet.getInt(8);
+        }
+        return 0;
     }
 
     public List<Football> showInformation() throws SQLException {
@@ -57,11 +61,19 @@ public class FootballRepository {
         return footballs;
     }
 
-    public void LeagueSort() throws SQLException {
+    public List<Football> leagueSort() throws SQLException {
 
         String sql = "Select * from football_tbl ORDER BY points";
         PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
+        List<Football> footballs = new ArrayList<>();
         ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            Football football = new Football(resultSet.getString(2),
+                resultSet.getInt(4), resultSet.getInt(5), resultSet.getInt(6),
+                resultSet.getInt(7), resultSet.getInt(8));
+            footballs.add(football);
+        }
+        return footballs;
     }
 
 }

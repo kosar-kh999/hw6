@@ -18,7 +18,7 @@ public class FootballImp implements League{
     @Override
     public void deleteTeam(int points) throws SQLException {
         deleteTeam(points);
-    }//toDo
+    }
 
     @Override
     public List<Football> showInformationTeam() throws SQLException {
@@ -26,8 +26,7 @@ public class FootballImp implements League{
     }
 
     @Override
-    public void sortByPoints() throws SQLException {
-
-    }//toDo
-
+    public List<Football> leagueSort() throws SQLException {
+        return footballRepository.leagueSort();
+    }
 }
