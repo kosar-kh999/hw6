@@ -15,4 +15,6 @@ public interface LeagueVolleyBallImp {
     public int countPlays() throws SQLException;
 
     public List<VolleyBall> showInformation() throws SQLException;
+
+    public List<VolleyBall> leagueSort() throws SQLException;
 }

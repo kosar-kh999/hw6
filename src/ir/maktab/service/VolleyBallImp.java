@@ -29,4 +29,9 @@ public class VolleyBallImp implements LeagueVolleyBallImp {
     public List<VolleyBall> showInformation() throws SQLException {
         return volleyBallRepository.showInformation();
     }
+
+    @Override
+    public List<VolleyBall> leagueSort() throws SQLException {
+        return volleyBallRepository.leagueSort();
+    }
 }

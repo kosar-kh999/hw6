@@ -52,8 +52,23 @@ public class VolleyBallRepository {
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()){
             VolleyBall volleyBall = new VolleyBall(resultSet.getString(1),
-                    resultSet.getInt(2), resultSet.getInt(3), resultSet.getInt(4),
+                    resultSet.getString(2), resultSet.getInt(3), resultSet.getInt(4),
                     resultSet.getInt(5),resultSet.getInt(6));
+            volleyBalls.add(volleyBall);
+        }
+        return volleyBalls;
+    }
+
+    public List<VolleyBall> leagueSort() throws SQLException {
+
+        String sql = "Select * from volleyBall_tbl ORDER BY points";
+        PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
+        List<VolleyBall> volleyBalls = new ArrayList<>();
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            VolleyBall volleyBall = new VolleyBall(resultSet.getString(1),
+                    resultSet.getInt(2), resultSet.getInt(3),
+                    resultSet.getInt(4), resultSet.getInt(5));
             volleyBalls.add(volleyBall);
         }
         return volleyBalls;
