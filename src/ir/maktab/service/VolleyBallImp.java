@@ -13,4 +13,9 @@ public class VolleyBallImp implements LeagueVolleyBallImp {
     public int addTeam(VolleyBall volleyBall) throws SQLException {
         return volleyBallRepository.insertTeam(volleyBall);
     }
+
+    @Override
+    public void deleteTeam(int points) throws SQLException {
+        volleyBallRepository.deleteTeam(points);
+    }
 }

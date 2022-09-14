@@ -8,4 +8,6 @@ import java.sql.SQLException;
 public interface LeagueVolleyBallImp {
 
     int addTeam(VolleyBall volleyBall) throws SQLException;
+
+    public void deleteTeam(int points) throws SQLException;
 }

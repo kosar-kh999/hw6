@@ -22,4 +22,12 @@ public class VolleyBallRepository {
         preparedStatement.setInt(6, volleyBall.getNumberOfPlayed());
         return preparedStatement.executeUpdate();
     }
+
+    public void deleteTeam(int points) throws SQLException {
+
+        String sql = "DELETE FROM volleyBall_tbl WHERE MIN(points)  ";
+        PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
+        preparedStatement.executeUpdate();
+    }
+
 }
