@@ -4,6 +4,7 @@ import ir.maktab.model.entity.Football;
 import ir.maktab.model.entity.VolleyBall;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface LeagueVolleyBallImp {
 
@@ -12,4 +13,6 @@ public interface LeagueVolleyBallImp {
     public void deleteTeam(int points) throws SQLException;
 
     public int countPlays() throws SQLException;
+
+    public List<VolleyBall> showInformation() throws SQLException;
 }

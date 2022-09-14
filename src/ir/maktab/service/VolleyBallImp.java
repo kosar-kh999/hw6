@@ -4,6 +4,7 @@ import ir.maktab.model.entity.VolleyBall;
 import ir.maktab.model.repository.VolleyBallRepository;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class VolleyBallImp implements LeagueVolleyBallImp {
 
@@ -22,5 +23,10 @@ public class VolleyBallImp implements LeagueVolleyBallImp {
     @Override
     public int countPlays() throws SQLException {
         return volleyBallRepository.countPlays();
+    }
+
+    @Override
+    public List<VolleyBall> showInformation() throws SQLException {
+        return volleyBallRepository.showInformation();
     }
 }
