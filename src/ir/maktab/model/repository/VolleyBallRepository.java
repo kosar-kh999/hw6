@@ -37,7 +37,7 @@ public class VolleyBallRepository {
         PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
         if (resultSet.next()){
-            return resultSet.getInt(8);
+            return resultSet.getInt(7);
         }
         return 0;
     }
