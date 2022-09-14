@@ -6,7 +6,7 @@ import ir.maktab.model.repository.FootballRepository;
 import java.sql.SQLException;
 import java.util.List;
 
-public class FootballImp implements League{
+public class FootballImp implements LeagueFootball {
 
     private FootballRepository footballRepository = new FootballRepository();
 
@@ -29,4 +29,11 @@ public class FootballImp implements League{
     public List<Football> leagueSort() throws SQLException {
         return footballRepository.leagueSort();
     }
+
+    @Override
+    public int countPlays() throws SQLException {
+        return footballRepository.countPlays();
+    }
+
+
 }

@@ -10,4 +10,6 @@ public interface LeagueVolleyBallImp {
     int addTeam(VolleyBall volleyBall) throws SQLException;
 
     public void deleteTeam(int points) throws SQLException;
+
+    public int countPlays() throws SQLException;
 }

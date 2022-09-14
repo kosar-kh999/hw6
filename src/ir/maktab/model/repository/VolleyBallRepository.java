@@ -5,6 +5,7 @@ import ir.maktab.model.entity.Football;
 import ir.maktab.model.entity.VolleyBall;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class VolleyBallRepository {
@@ -30,4 +31,14 @@ public class VolleyBallRepository {
         preparedStatement.executeUpdate();
     }
 
+    public int countPlays() throws SQLException {
+
+        String sql = "SELECT count(numberOfPlayed)FROM volleyBall_tbl ";
+        PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()){
+            return resultSet.getInt(8);
+        }
+        return 0;
+    }
 }

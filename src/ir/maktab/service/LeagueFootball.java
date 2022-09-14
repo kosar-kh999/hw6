@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 
-public interface League {
+public interface LeagueFootball {
 
     int addTeam(Football football) throws SQLException;
 
@@ -15,5 +15,7 @@ public interface League {
     public List<Football> showInformationTeam() throws SQLException;
 
     public List<Football> leagueSort() throws SQLException;
+
+    public int countPlays() throws SQLException;
 
 }
