@@ -18,4 +18,6 @@ public interface LeagueFootball {
 
     public int countPlays() throws SQLException;
 
+    public List<Football> updateTeam(Football football) throws SQLException;
+
 }

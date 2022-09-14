@@ -1,6 +1,7 @@
 package ir.maktab.service;
 
 import ir.maktab.model.entity.Football;
+import ir.maktab.model.entity.SportClub;
 import ir.maktab.model.repository.FootballRepository;
 
 import java.sql.SQLException;
@@ -35,5 +36,9 @@ public class FootballImp implements LeagueFootball {
         return footballRepository.countPlays();
     }
 
+    @Override
+    public List<Football> updateTeam(Football football) throws SQLException {
+        return footballRepository.updateTeam(football);
+    }
 
 }

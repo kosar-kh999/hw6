@@ -6,7 +6,7 @@ import ir.maktab.model.repository.VolleyBallRepository;
 import java.sql.SQLException;
 import java.util.List;
 
-public class VolleyBallImp implements LeagueVolleyBallImp {
+public class VolleyBallImp implements LeagueVolleyBall {
 
     VolleyBallRepository volleyBallRepository = new VolleyBallRepository();
 
@@ -34,4 +34,10 @@ public class VolleyBallImp implements LeagueVolleyBallImp {
     public List<VolleyBall> leagueSort() throws SQLException {
         return volleyBallRepository.leagueSort();
     }
+
+    @Override
+    public List<VolleyBall> updateTeam(VolleyBall volleyBall) throws SQLException {
+        return volleyBallRepository.updateTeam(volleyBall);
+    }
+
 }

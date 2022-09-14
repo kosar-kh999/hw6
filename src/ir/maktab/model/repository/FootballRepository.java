@@ -14,24 +14,19 @@ public class FootballRepository {
 
     public int insertTeam(Football football) throws SQLException {
 
-        String sql = "insert into football_tbl  (name,location,wins,draws,defeats,points,numberOfPlayed)values " +
-                " (?,?,?,?,?,?,?)";
+        String sql = "insert into football_tbl  (name,location)values " +
+                " (?,?)";
         PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
         preparedStatement.setString(1,football.getName() );
         preparedStatement.setString(2,football.getLocation());
-        preparedStatement.setInt(3,football.getWins() );
-        preparedStatement.setInt(4,football.getDraws() );
-        preparedStatement.setInt(5,football.getDefeats() );
-        preparedStatement.setInt(6, football.getPoints());
-        preparedStatement.setInt(7, football.getNumberOfPlayed());
         return preparedStatement.executeUpdate();
     }
 
-    public void deleteTeam(int points) throws SQLException {
+    public int deleteTeam(int points) throws SQLException {
 
         String sql = "DELETE FROM football_tbl WHERE MIN(points)  ";
         PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
-        preparedStatement.executeUpdate();
+        return preparedStatement.executeUpdate();
     }
 
     public int countPlays() throws SQLException {
@@ -55,7 +50,7 @@ public class FootballRepository {
             Football football = new Football(resultSet.getInt(1),
                     resultSet.getString(2), resultSet.getString(3), resultSet.getInt(4),
                     resultSet.getInt(5), resultSet.getInt(6), resultSet.getInt(7),
-                    resultSet.getInt(8));
+                    resultSet.getInt(8),resultSet.getInt(9),resultSet.getInt(10));
             footballs.add(football);
         }
         return footballs;
@@ -70,10 +65,34 @@ public class FootballRepository {
         while (resultSet.next()){
             Football football = new Football(resultSet.getString(2),
                 resultSet.getInt(4), resultSet.getInt(5), resultSet.getInt(6),
-                resultSet.getInt(7), resultSet.getInt(8));
+                resultSet.getInt(7), resultSet.getInt(8),resultSet.getInt(9),
+                    resultSet.getInt(10));
             footballs.add(football);
         }
         return footballs;
     }
 
+    public List<Football> updateTeam(Football football) throws SQLException {
+
+        String sql = "UPDATE football_tbl SET wins = ? ,draws = ?,defeats = ?,points = ?,numberOfPlayed = ?," +
+                "goalsSocccer = ?,goalsReceived = ? ";
+        PreparedStatement preparedStatement = ApplicationConstant.getConnection().prepareStatement(sql);
+        preparedStatement.setInt(1,football.getWins());
+        preparedStatement.setInt(2,football.getDraws());
+        preparedStatement.setInt(3,football.getDefeats());
+        preparedStatement.setInt(4,football.getPoints());
+        preparedStatement.setInt(5,football.getNumberOfPlayed());
+        preparedStatement.setInt(6,football.getGoalsSoccer());
+        preparedStatement.setInt(7,football.getGoalsReceived());
+        List<Football> footballs = new ArrayList<>();
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            Football footballTeam = new Football(resultSet.getString(1),
+                    resultSet.getInt(2), resultSet.getInt(3), resultSet.getInt(4),
+                    resultSet.getInt(5), resultSet.getInt(6),resultSet.getInt(7),
+                    resultSet.getInt(8));
+            footballs.add(footballTeam);
+        }
+        return footballs;
+     }
 }

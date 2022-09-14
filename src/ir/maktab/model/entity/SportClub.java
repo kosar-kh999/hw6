@@ -1,8 +1,12 @@
 package ir.maktab.model.entity;
 
+import java.util.Objects;
+
 public abstract class SportClub {
 
     int id;
+
+    String typeOfSport;
     String name;
     String location;
     int wins;
@@ -11,7 +15,8 @@ public abstract class SportClub {
     int points;
     int numberOfPlayed;
 
-    public SportClub(String name, String location, int wins, int defeats, int points, int numberOfPlayed) {
+    public SportClub(String name, String location, int wins, int defeats, int points,
+                     int numberOfPlayed) {
         this.name = name;
         this.location = location;
         this.wins = wins;
@@ -20,9 +25,10 @@ public abstract class SportClub {
         this.numberOfPlayed = numberOfPlayed;
     }
 
-    public SportClub(int id, String name, String location, int wins, int draws, int defeats, int points,
-                     int numberOfPlayed) {
+    public SportClub(int id, String typeOfSport,String name, String location, int wins, int draws, int defeats,
+                     int points, int numberOfPlayed) {
         this.id = id;
+        this.typeOfSport = typeOfSport;
         this.name = name;
         this.location = location;
         this.wins = wins;
@@ -39,6 +45,34 @@ public abstract class SportClub {
         this.defeats = defeats;
         this.points = points;
         this.numberOfPlayed = numberOfPlayed;
+    }
+
+    public SportClub(String name, int wins, int defeats, int points, int numberOfPlayed) {
+        this.name = name;
+        this.wins = wins;
+        this.defeats = defeats;
+        this.points = points;
+        this.numberOfPlayed = numberOfPlayed;
+    }
+
+    public SportClub(int id, String name, String location, int wins, int draws, int defeats, int points
+            , int numberOfPlayed) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
+        this.wins = wins;
+        this.draws = draws;
+        this.defeats = defeats;
+        this.points = points;
+        this.numberOfPlayed = numberOfPlayed;
+    }
+
+    public String getTypeOfSport() {
+        return typeOfSport;
+    }
+
+    public void setTypeOfSport(String typeOfSport) {
+        this.typeOfSport = typeOfSport;
     }
 
     public int getId() {
@@ -106,9 +140,24 @@ public abstract class SportClub {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SportClub sportClub = (SportClub) o;
+        return id == sportClub.id && wins == sportClub.wins && draws == sportClub.draws && defeats == sportClub.defeats && points == sportClub.points && numberOfPlayed == sportClub.numberOfPlayed && Objects.equals(typeOfSport, sportClub.typeOfSport) && Objects.equals(name, sportClub.name) && Objects.equals(location, sportClub.location);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, typeOfSport, name, location, wins, draws, defeats, points, numberOfPlayed);
+    }
+
+    @Override
     public String toString() {
         return "SportClub{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", typeOfSport='" + typeOfSport + '\'' +
+                ", name='" + name + '\'' +
                 ", location='" + location + '\'' +
                 ", wins=" + wins +
                 ", draws=" + draws +
